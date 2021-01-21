@@ -1,0 +1,37 @@
+
+Version 1.1.0 - Colors
+
+Additions
+ - Console text colors! Hopefully this will give users a better idea of what is and isn't supported.
+ - Hovering your cursor over the console object text now shows the instance ID and location
+ - The esc key now exits out of the console
+ - Refined the readme file - most notably added the Integration section, which hopefully gives better
+   insight for how to integrate your code with the console
+ 
+Fixes
+ - The instance cursor (which shows which object you're selecting when using select_obj) has been moved to 
+   the draw GUI event
+ - As such, the draw_instance_cursor function has been updated to work in the draw GUI event rather than 
+   the regular draw
+ - select_obj now properly removes the inst_selecting_name variable from the display when finished
+ - The when set to the log, the window now cuts off long strings to be more readable. This isn't a great 
+   fix, but probably better than nothing.
+ - Made other adjustments to the log window
+ - The display now removes variables once their instance no longer exists
+ - The string_split function no longer uses DS lists
+ - Fixed string_is_float and string_is_int to work with signed values
+ - Fixed some scripts to automatically scope the console
+ 
+Known issues
+ - Sometimes the color parser appears to add a space. This is only in very specific instances which would
+   throw errors anyway. You can disable the text colors by setting the console's console_colors to false.
+ - Text color parsing doesn't separate via semi-colons
+ - In some cases, the window doesn't respond to the mouse. I'm not sure what causes this, but you can fix 
+   it by enabeling the display. Probably a simple scripting issue, and I'll figure it out when I have more 
+   time.
+ - Commas are ignored when on the ends of arguments, but still require spacing between
+ - The help command still kinda sucks
+ 
+And of course some scripts were tightened up. I intend for the next update to address some of the
+readability issues the code currently has. The main addition for that update will likely be hotkey
+support.
