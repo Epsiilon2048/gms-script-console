@@ -1,5 +1,54 @@
 
-Version 1.1.0 - Colors
+Early release 1.2.0 - Text embedding
+
+Wow, this update is disproportionately huge! That's why it's an early release at the moment, wanted to
+make a quick break point. This update, as far as I know, is perfectly functional. The main issue is that
+I had to disable the log as a quick fix to a memory leak issue.
+
+Additions
+ - Added embedded text--text which can be colored or clicked to run scripts - It's pretty costly though,
+   and you might want to disable it (embed_text in the console objet) if it's a problem
+ - Completely revamped help command, now has much more info and clarity
+ - Added console customization options
+ - Added color scheme presets, which can be found in the console menu
+ - Added the bind function, which allows the binding of keys to console commands or scripts
+ - Added the addvar and togglevar functions which change the values of variables - this is a quick 
+   solution for incrimenting variables with binds, and I hope to add proper operation support in the 
+   future.
+ - Greatly expanded the supported macros to include keyboard keys
+ - Made the Window and Display into Console_window structs - and the output can be displayed as a console
+   window as well
+ - Added the report function, which returns the longMessage of the previous script error
+ - Updated the readme document
+ - And probably a lot of other stuff I'm forgetting
+
+Fixes & changes
+ - Fixed the display function to now properly toggle variables off
+ - The output_set function now displays arrays as top-down lists to the user
+ - Updated various command names and descriptions for clarity
+ 
+Known issues
+ - Sometimes the color parser appears to add a space. This is only in very specific instances which would
+   throw errors anyway. You can disable the text colors by setting the console's console_colors to false.
+ - Text color parsing doesn't separate via semi-colons
+ - Command text parsing manages strings very poorly
+ - Commas are ignored when on the ends of arguments, but still require spacing between
+ - 0 doesn't show up as real with the colors
+ - Console window constructors are not autonomous
+ - Weird console window logic causes problems sometimes
+ - Embedded text cursor detection occasionally thinks the mouse is over two embeds at the same time,
+   though only one embed can be activated at a time; it's more of a visual issue
+ 
+To do before major release:
+ - Rewrite the console text parsing
+ - Add support for structs
+ - Fix log
+ - Impliment the list of outdated commands to be colored in a certain way
+ - Update and smoothen out some commands
+ 
+=====================================================================================
+
+Release 1.1.0 - Colors
 
 Additions
  - Console text colors! Hopefully this will give users a better idea of what is and isn't supported.
@@ -27,9 +76,10 @@ Known issues
    throw errors anyway. You can disable the text colors by setting the console's console_colors to false.
  - Text color parsing doesn't separate via semi-colons
  - In some cases, the window doesn't respond to the mouse. I'm not sure what causes this, but you can fix 
-   it by enabeling the display. Probably a simple scripting issue, and I'll figure it out when I have more 
+   it by enabling the display. Probably a simple scripting issue, and I'll figure it out when I have more 
    time.
  - Commas are ignored when on the ends of arguments, but still require spacing between
+ - 0 doesn't show up as real with the colors
  - The help command still kinda sucks
  
 And of course some scripts were tightened up. I intend for the next update to address some of the

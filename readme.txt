@@ -1,30 +1,32 @@
-==========================================
-ccccc	ooooo	l		ooooo	rrrr	!!
-c		o	o	l		o	o	r	r	!!
-c		o	o	l		o	o	rrrr	
-ccccc	ooooo	lllll	ooooo	r	r	!!
-==========================================
 
 // Update //
 Check version_log.txt for info on the new update!
-
-// Documentation //
-This document is for how to integrate this console with your gamecode. If you need help with anything,
-just message me on discord (Epsiilon#2048)!
 
 // Integration //
  - Display variable values using the display function
  - Display console messages using the output_set function
  - Set the input using the input_set function - you could use this to hotkey commands, which is
    something I intend to add soon
- - Even send messages to the player using the window_set function! spooky!
+ - Even send messages to the player using the window function! spooky!
  - You can run your own scripts with the console with little-to-no effort required, so long as it uses
    supported data types (unsupported ones include arrays, structs, and data structures, and you'll just
-   have to code your way around them in the script).
+   have to code your way around them in the script at the moment).
+ - If you want to start the game displaying a variable or doing anything else with the console, put it in
+   the console_startup script. It's automatically run at the end of the console's create event.
+ - Overall, integration beyond this is quite user unfriendly, and with the next major release I'll address 
+   these issues.
    
 // Console help //
-For help on in-game console commands, type "help" in the console. By default, it is toggled with the tab 
-key. This help command is insufficient and will be updated later.
+By default, the console key is tab. You can change this by changing the console_key variable.
+You can also press shift+tab to quickely pull up the help menu.
+
+This console operates in scopes. You can change the scope to a certain object by entering its name, or
+you can type "object.variable" to access variables within objects outside of your scope, as it is in GML.
+Note that at the moment, scripts are executed within the scope of the console, not of the scoped object.
+
+// Where's the log?? //
+For this version, it's been temporarily disabled. It'll work in the full release of this version (which
+probably won't be too long).
 
 // Macros and built-in global variables //
 Build-in global variables such as mouse_x have to be prefixed by "global.", and macros have to be added
@@ -40,14 +42,10 @@ as "oName", the identifier would have to be just "o", meaning you wouldn't be ab
 that start with an "o" properly. In later releases, I'll fix this. In the meantime however, I've added a 
 universal object identifier, which is "o/". I'm not a fan of this solution, but it works for now.
 
-// Spaghetti code //
-There is a lot of stuff that should be cached and isnt, and there's probably also a lot of redundant logic.
-The code in general is pretty unreadable, too. I plan to fix all of this in later versions. A lot of the
-variable names are overly long, confusing, and inconsistent. I'll fix this in later versions.
-
 // Potential features //
+ - Struct support - Most of the work has been done there, just need to integrate it
+ - All kinds of crazy text embedding features
  - The ability to scroll through console commands which exceed the length
- - Embedding commands in text which can be clicked to activate
  - Hovering over scripts in the commandline shows help
  - Undo and redo
  - Autofill and real time syntax errors
@@ -55,11 +53,19 @@ variable names are overly long, confusing, and inconsistent. I'll fix this in la
  - Color picker window
  - Sprite support
  - Variable value sliders
- - Hotkey binding to commands
  - Buttons which activate a command when pressed
  - A command that allows you to specify another command to be run every frame
- - Console color palette presets
  - Text file logs
+ - Enumerate support
+ - Manual resizing of windows
+ - Text icons
+ - Menu constructors
+ - Live updating variables within embedded text
+ - Better support for users who disable embedded text
+ - The ability to access embeds by typing
+ - Performance graphs and review
+ - Level editing tools
+ - Console settings save file
  - (proper) struct and array support
  - (possibly?) universal data structure support
  - (unlikely) support for scripts being run within scripts
